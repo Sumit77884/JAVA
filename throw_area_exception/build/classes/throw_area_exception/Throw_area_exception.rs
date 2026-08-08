@@ -1,0 +1,2 @@
+throw_area_exception.NegativeDimentionException
+throw_area_exception.Throw_area_exception
