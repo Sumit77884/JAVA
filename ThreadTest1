@@ -1,0 +1,50 @@
+package multithreadtest1;
+/*
+class MyThread extends Thread{
+    public void run(){
+        int i=1;
+        while(true){
+            System.out.println(i+"Hello");
+            i++;
+        }
+    }
+}
+*/
+  class MyRunnable implements Runnable{
+      public void run(){
+          int i=1;
+          while(true){
+              System.out.println(i+"Hello");
+              i++;
+          }
+      }
+     
+ }
+public class MultithreadTest1 //implements Runnable //extends Thread 
+{
+    /*
+    public void run(){
+        int i=1;
+        while(true)
+        {
+            System.out.println(i+"Hello");
+            i++;
+        }
+    }
+*/
+    public static void main(String[] args) {
+        // TODO code application logic here
+       //  MyThread t=new MyThread();
+      // MultithreadTest1 t=new MultithreadTest1();
+       // t.start();
+      // MultithreadTest1 t=new MultithreadTest1();
+      MyRunnable r=new MyRunnable();
+      Thread t= new Thread(r);
+      t.start();
+        int i=1;
+        while(true){
+            System.out.println(i+"World");
+            i++; 
+        } 
+    }
+}
