@@ -1,0 +1,30 @@
+package docdemo;
+class A{
+    public void display(){
+        
+    }
+}
+class B extends A
+{
+    @Override
+    public void display(){
+        
+    }
+    @Deprecated
+    public void show(){
+    
+}
+}
+public class DocDemo {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        int i;
+            B b=new B();
+            @SuppressWarnings("desprecation")
+            b.show();
+    }
+}
