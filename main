@@ -1,0 +1,35 @@
+package com.example;
+
+import com.example.entity.User;
+import com.example.util.JPAUtil;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+
+public class Main {
+    public static void main(String[] args) {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        try {
+            // Begin Transaction
+            tx.begin();
+
+            // Create and persist a new entity
+            User user = new User("John Doe", "john.doe@example.com");
+            em.persist(user);
+
+            // Commit Transaction
+            tx.commit();
+            System.out.println("User saved successfully with ID: " + user.getId());
+
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+            JPAUtil.shutdown();
+        }
+    }
+}
